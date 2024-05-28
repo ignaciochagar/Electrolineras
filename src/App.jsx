@@ -1,7 +1,8 @@
 // app.jsx
 import { useState } from 'react';
 import './App.css';
-import Login from "../src/components/login/Login"; // Asegúrate de que la ruta del componente Login sea correcta
+import Map from './components/Map'
+import Login from "./components/login/Login"; // Asegúrate de que la ruta del componente Login sea correcta
 
 function App() {
 
@@ -9,6 +10,14 @@ function App() {
     <>
       <h1>Inicia Sesion</h1>
       <Login /> {/* Renderiza el componente Login aquí */}
+
+      <article className="map-outer">
+          <Map
+          
+            title="Camino de Santiago"
+
+          />
+      </article>
     </>
   );
 }
