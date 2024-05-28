@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import '../../App.css';
+import "../../App.css";
+import usersData from "../../Database/Users.json";
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -10,29 +11,26 @@ function Login() {
   const [passwordRepeatError, setPasswordRepeatError] = useState('');
 
   useEffect(() => {
-    // Validar el campo de email
     const validateEmail = () => {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email) && email !== '') { // Verifica si el email no está vacío antes de mostrar el mensaje de error
+      if (!emailRegex.test(email) && email !== '') {
         setEmailError("El correo electrónico no es válido. Asegúrate de que esté en el formato correcto, como ejemplo@dominio.com.");
       } else {
         setEmailError('');
       }
     };
 
-    // Validar el campo de contraseña
     const validatePassword = () => {
       const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$/;
-      if (!passwordRegex.test(password) && password !== '') { // Verifica si la contraseña no está vacía antes de mostrar el mensaje de error
+      if (!passwordRegex.test(password) && password !== '') {
         setPasswordError("La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un símbolo.");
       } else {
         setPasswordError('');
       }
     };
 
-    // Validar el campo de repetición de contraseña
     const validatePasswordRepeat = () => {
-      if (passwordRepeat !== password && passwordRepeat !== '') { // Verifica si la repetición de la contraseña no está vacía antes de mostrar el mensaje de error
+      if (passwordRepeat !== password && passwordRepeat !== '') {
         setPasswordRepeatError("Las contraseñas no coinciden");
       } else {
         setPasswordRepeatError('');
@@ -56,9 +54,25 @@ function Login() {
     setPasswordRepeat(event.target.value);
   };
 
+  const handleLogin = (event) => {
+    event.preventDefault();
+
+    // Buscar el usuario por email
+    const user = usersData.find(user => user.Email === email);
+
+    // Verificar si el usuario existe y la contraseña coincide
+    if (user && user.Password === password) {
+      // Inicio de sesión exitoso
+      alert('Inicio de sesión exitoso');
+    } else {
+      // Credenciales incorrectas
+      alert('Credenciales incorrectas');
+    }
+  };
+
   return (
     <section>
-      <form>
+      <form onSubmit={handleLogin}>
         <div>
           <label htmlFor="Email">Email:</label>
           <input
@@ -92,6 +106,7 @@ function Login() {
           />
           {passwordRepeatError && <p style={{ color: 'red' }}>{passwordRepeatError}</p>}
         </div>
+        <button type="submit">Iniciar sesión</button>
       </form>
     </section>
   );
