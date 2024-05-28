@@ -1,8 +1,9 @@
 // app.jsx
 import { useState } from 'react';
 import './App.css';
-import Map from './components/Map'
+import Map from './components/Map';
 import Login from "./components/login/Login"; // Asegúrate de que la ruta del componente Login sea correcta
+import Buttons from './components/rutebotton/rutebotton';
 
 function App() {
 
@@ -18,6 +19,12 @@ function App() {
 
           />
       </article>
+
+      <section>
+
+        <Buttons />
+
+      </section>
     </>
   );
 }
