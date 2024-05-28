@@ -3,28 +3,28 @@
 		"User_id" : 1,
 		"Name" : "Mikel",
 		"Licence" : 1,
-		"Email" : "mikel@example.com",
-		"Password" : "Contraseña123!"
+		"email" : "mikel@example.com",
+		"password" : "Contraseña123!"
 	},
 	{
 		"User_id" : 2,
 		"Name" : "Asier",
 		"Licence" : 1,
-		"Email" : "asier@example.com",
-		"Password" : "Contraseña456!"
+		"email" : "asier@example.com",
+		"password" : "Contraseña456!"
 	},
 	{
 		"User_id" : 3,
 		"Name" : "Natxo",
 		"Licence" : 1,
-		"Email" : "natxo@example.com",
-		"Password" : "Contraseña789!"
+		"email" : "natxo@example.com",
+		"password" : "Contraseña789!"
 	},
 	{
 		"User_id" : 4,
 		"Name" : "Jhonse",
 		"Licence" : 1,
-		"Email" : "jhonse@example.com",
-		"Password" : "Contraseña101112!"
+		"email" : "jhonse@example.com",
+		"password" : "Contraseña101112!"
 	}
 ]
