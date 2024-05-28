@@ -4,7 +4,7 @@
 		"Name" : "Mikel",
 		"Licence" : 1,
 		"Email" : "mikel@example.com",
-		"Password" : "Contraseña123"
+		"Password" : "Contraseña123!"
 	},
 	{
 		"User_id" : 2,
@@ -18,13 +18,13 @@
 		"Name" : "Natxo",
 		"Licence" : 1,
 		"Email" : "natxo@example.com",
-		"Password" : "Contraseña789"
+		"Password" : "Contraseña789!"
 	},
 	{
 		"User_id" : 4,
 		"Name" : "Jhonse",
 		"Licence" : 1,
 		"Email" : "jhonse@example.com",
-		"Password" : "Contraseña101112"
+		"Password" : "Contraseña101112!"
 	}
 ]
