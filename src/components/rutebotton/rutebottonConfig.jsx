@@ -13,10 +13,9 @@ const buttonsData = [
     { id: 12, label: 'Epílogo a Fisterra y Muxía' },
   ];
   
-const handleClick = (label) => {
-    alert(`Has hecho clic en ${label}`);
+  const handleClick = (label, onRouteChange) => {
+    onRouteChange(label);
   };
-
 
   export{
     buttonsData,
