@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import "../../App.css";
 import usersData from "../../Database/Users.json";
 
-console.log("la userdata es:", usersData);
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -74,7 +73,6 @@ function Login() {
   };
 
   const handleRegister = (event) => {
-    console.log("Llega aqui");
     event.preventDefault(); // Evitar que la página se recargue al enviar el formulario
   
     // Verificar si las contraseñas coinciden
