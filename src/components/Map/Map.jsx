@@ -10,7 +10,7 @@ const Map = ({ title = "map",  zoom=6,lat=40.43731467230963,lng=-3.6898473475077
         <section className="map">
             <h2>{title}</h2>
             <MapContainer center={[lat=40.43731467230963,lng=-3.689847347507708]} zoom={zoom}>
-                let marker = L.marker([lat, lng]).addTo(map);
+            
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />

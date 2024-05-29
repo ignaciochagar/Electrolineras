@@ -16,7 +16,7 @@ function App() {
       <div>
       <Navbar/>
       <h1>Inicia Sesion</h1>
-      
+
       <Login /> {/* Renderiza el componente Login aquí */}
 
       <article className="map-outer">
