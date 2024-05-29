@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
-import '../../App.css';
+import "../../App.css";
+import usersData from "../../Database/Users.json";
+
+console.log("la userdata es:", usersData);
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -8,31 +11,29 @@ function Login() {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [passwordRepeatError, setPasswordRepeatError] = useState('');
+  const [isRegistering, setIsRegistering] = useState(false); // Estado para controlar si se está en el modo de registro o inicio de sesión
 
   useEffect(() => {
-    // Validar el campo de email
     const validateEmail = () => {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email) && email !== '') { // Verifica si el email no está vacío antes de mostrar el mensaje de error
+      if (!emailRegex.test(email) && email !== '') {
         setEmailError("El correo electrónico no es válido. Asegúrate de que esté en el formato correcto, como ejemplo@dominio.com.");
       } else {
         setEmailError('');
       }
     };
 
-    // Validar el campo de contraseña
     const validatePassword = () => {
       const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$/;
-      if (!passwordRegex.test(password) && password !== '') { // Verifica si la contraseña no está vacía antes de mostrar el mensaje de error
+      if (!passwordRegex.test(password) && password !== '') {
         setPasswordError("La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un símbolo.");
       } else {
         setPasswordError('');
       }
     };
 
-    // Validar el campo de repetición de contraseña
     const validatePasswordRepeat = () => {
-      if (passwordRepeat !== password && passwordRepeat !== '') { // Verifica si la repetición de la contraseña no está vacía antes de mostrar el mensaje de error
+      if (passwordRepeat !== password && passwordRepeat !== '') {
         setPasswordRepeatError("Las contraseñas no coinciden");
       } else {
         setPasswordRepeatError('');
@@ -56,43 +57,141 @@ function Login() {
     setPasswordRepeat(event.target.value);
   };
 
+  const handleLogin = (event) => {
+    event.preventDefault();
+
+    // Buscar el usuario por email
+    const user = usersData.find(user => user.email === email);
+
+    // Verificar si el usuario existe y la contraseña coincide
+    if (user && user.password === password) {
+      // Inicio de sesión exitoso
+      alert('Inicio de sesión exitoso');
+    } else {
+      // Credenciales incorrectas
+      alert('Credenciales incorrectas');
+    }
+  };
+
+  const handleRegister = (event) => {
+    console.log("Llega aqui");
+    event.preventDefault(); // Evitar que la página se recargue al enviar el formulario
+  
+    // Verificar si las contraseñas coinciden
+    if (password === passwordRepeat) {
+      // Verificar si el email ya está registrado
+      const isEmailRegistered = usersData.some(user => user.Email === email);
+      if (isEmailRegistered) {
+        alert('El correo electrónico ya está registrado');
+      } else {
+        // Agregar el nuevo usuario a la lista
+        const maxId = Math.max(...usersData.map(usuario => usuario.User_id));
+        const newId = maxId + 1;
+        const newUser = {
+            User_id: newId,
+            Is_admin: 0,
+            email,
+            password
+        };
+        usersData.push(newUser);
+        alert('Registro exitoso');
+        // Limpia los campos después del registro exitoso
+        setEmail('');
+        setPassword('');
+        setPasswordRepeat('');
+        setEmailError('');
+        setPasswordError('');
+        setPasswordRepeatError('');
+        // Cambia al modo de inicio de sesión después del registro exitoso
+        setIsRegistering(false);
+      }
+    } else {
+      alert('Las contraseñas no coinciden');
+    }
+  };
+  
+  const handleToggleMode = (event) => {
+    event.preventDefault(); // Previene el comportamiento predeterminado del botón
+    console.log("la userdata es:", usersData);
+
+    setIsRegistering(prevState => !prevState); // Cambiar el estado de registro
+    // Limpiar los campos y errores cuando se cambia entre modos de formulario
+    setEmail('');
+    setPassword('');
+    setPasswordRepeat('');
+    setEmailError('');
+    setPasswordError('');
+    setPasswordRepeatError('');
+  };
+
   return (
     <section>
-      <form>
-        <div>
-          <label htmlFor="Email">Email:</label>
-          <input
-            type="text"
-            id="Email"
-            name="Email"
-            value={email}
-            onChange={handleEmailChange}
-          />
-          {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
-        </div>
-        <div>
-          <label htmlFor="Password">Password:</label>
-          <input
-            type="password"
-            id="Password"
-            name="Password"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-          {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
-        </div>
-        <div>
-          <label htmlFor="PasswordRepeat">Password Repeat:</label>
-          <input
-            type="password"
-            id="PasswordRepeat"
-            name="PasswordRepeat"
-            value={passwordRepeat}
-            onChange={handlePasswordRepeatChange}
-          />
-          {passwordRepeatError && <p style={{ color: 'red' }}>{passwordRepeatError}</p>}
-        </div>
-      </form>
+      {isRegistering ? (
+        <form onSubmit={handleRegister}>
+          <div>
+            <label htmlFor="Email">Email:</label>
+            <input
+              type="text"
+              id="Email"
+              name="Email"
+              value={email}
+              onChange={handleEmailChange}
+            />
+            {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
+          </div>
+          <div>
+            <label htmlFor="Password">Password:</label>
+            <input
+              type="password"
+              id="Password"
+              name="Password"
+              value={password}
+              onChange={handlePasswordChange}
+            />
+            {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
+          </div>
+          <div>
+            <label htmlFor="PasswordRepeat">Password Repeat:</label>
+            <input
+              type="password"
+              id="PasswordRepeat"
+              name="PasswordRepeat"
+              value={passwordRepeat}
+              onChange={handlePasswordRepeatChange}
+            />
+            {passwordRepeatError && <p style={{ color: 'red' }}>{passwordRepeatError}</p>}
+          </div>
+          <button type="submit">Registrarse</button>
+          <button type="button" onClick={handleToggleMode}>¿Ya tienes una cuenta? Inicia sesión aquí</button>
+        </form>
+      ) : (
+        <form onSubmit={handleLogin}>
+          <div>
+            <label htmlFor="Email">Email:</label>
+            <input
+              type="text"
+              id="Email"
+              name="Email"
+              value={email}
+              onChange={handleEmailChange}
+            />
+            {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
+          </div>
+          <div>
+            <label htmlFor="Password">Password:</label>
+            <input
+              type="password"
+              id="Password"
+              name="Password"
+              value={password}
+              onChange={handlePasswordChange}
+            />
+            {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
+          </div>
+          <button type="submit">Iniciar sesión</button>
+          <button type="button" onClick={handleToggleMode}>¿No tienes una cuenta? Regístrate aquí</button>
+        </form>
+      )}
     </section>
   );
 }
