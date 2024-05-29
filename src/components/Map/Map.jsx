@@ -1,4 +1,4 @@
-import { MapContainer, TileLayer, Marker, Popup, GeoJSON} from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, GeoJSON, Polyline} from 'react-leaflet';
 import  './Map.scss';
 import 'leaflet/dist/leaflet.css';
 
@@ -19,10 +19,12 @@ const Map = ({ title = "map",  zoom=6,lat=40.43731467230963,lng=-3.6898473475077
                         data={geoJson.data}
                         style={geoJson.config.style}
                         onEachFeature={geoJson.config.onEachFeature}
-                    />}
+                    />}   
             </MapContainer>
         </section>
     )
 }
+
+
 
 export default Map
