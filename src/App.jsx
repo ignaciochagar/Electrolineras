@@ -2,12 +2,11 @@
 // app.jsx
 import { useState } from 'react';
 import './App.css';
-import Map from './components/Map/Map';
 import MapWithRoutes from './components/Map/MapWithRoutes';
 import Login from "./components/login/Login"; // Asegúrate de que la ruta del componente Login sea correcta
 import Buttons from './components/rutebotton/rutebotton';
 import React from 'react';
-import Navbar from './components/navbar/navbar';
+import Navbar from './components/navbar/Navbar';
 
 function App() {
 
