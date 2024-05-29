@@ -6,7 +6,7 @@ const buttonsData = [
     { id: 5, label: 'Camino Sanabrés' },
     { id: 6, label: 'Camino Vasco' },
     { id: 7, label: 'Camino Portugués' },
-    { id: 8, label: 'Camino Caalán por San Juan de la Peña' },
+    { id: 8, label: 'Camino Catalán por San Juan de la Peña' },
     { id: 9, label: 'Camino Baztanés' },
     { id: 10, label: 'Camino Inglés' },
     { id: 11, label: 'Camino de San Salvador' },

@@ -1,34 +1,41 @@
+
 // app.jsx
 import { useState } from 'react';
 import './App.css';
-import Map from './components/Map'
+import Map from './components/Map/Map';
+import MapWithRoutes from './components/Map/MapWithRoutes';
 import Login from "./components/login/Login"; // Asegúrate de que la ruta del componente Login sea correcta
-
+import Buttons from './components/rutebotton/rutebotton';
 import React from 'react';
 import Navbar from './components/navbar/navbar';
 
 function App() {
 
   return (
-    <div>
-      <Navbar />
-      <>
-        <h1>Inicia Sesion</h1>
-        <Login /> {/* Renderiza el componente Login aquí */}
+    <>
+      <div>
+      <Navbar/>
+      <h1>Inicia Sesion</h1>
 
-        <article className="map-outer">
-          <Map
+      <Login /> {/* Renderiza el componente Login aquí */}
 
-            title="Camino de Santiago"
+      <article className="map-outer">
 
-          />
-        </article>
-      </>
-    </div> 
-      );
+        <MapWithRoutes
+        title="Camino de Santiago"
+         />
+
+      </article>
+
+      <section>
+
+        <Buttons />
+
+      </section>
+
+      </div>
+    </>
+  );
 }
-
-      export default App;
-
 
 export default App;
