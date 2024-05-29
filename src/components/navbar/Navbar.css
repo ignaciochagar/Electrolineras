@@ -1,0 +1,48 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #d7b38c; /* Color marrón pergamino */
+    padding: 0.5rem 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-content {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+  }
+  
+  .navbar-title {
+    font-family: 'Uncial Antiqua', sans-serif;
+    font-size: 2rem;
+    color: #4b3621; /* Color marrón oscuro */
+    margin: 0;
+  }
+  
+  .shell-icon {
+    display: flex;
+    align-items: center;
+  }
+  
+  .shell-icon svg {
+    fill: #4b3621; /* Color marrón oscuro */
+  }
+  
+  .navbar-icons {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .icon {
+    font-size: 1.5rem;
+    color: #4b3621; /* Color marrón oscuro */
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .icon:hover {
+    color: #6f4e37; /* Color marrón más claro */
+  }
+  
