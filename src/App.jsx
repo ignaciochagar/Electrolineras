@@ -9,6 +9,9 @@ import Buttons from './components/rutebotton/rutebotton';
 import React from 'react';
 import Navbar from './components/navbar/navbar';
 
+import Grid from './components/grid/Grid';
+import './styles/styles.css';
+
 function App() {
 
   return (
@@ -32,7 +35,7 @@ function App() {
         <Buttons />
 
       </section>
-
+      <Grid />
       </div>
     </>
   );
