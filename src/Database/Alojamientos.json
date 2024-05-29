@@ -1,0 +1,15 @@
+[
+	{
+        "Alojamiento_id" : 1,
+        "hostalname" : "Casa reactor",
+        "latitud" :  43.254010,
+        "longitud" :  -2.925593,
+        "camino" : "Camino frances",
+        "provincia" :  "Bizkaia",
+        "precioNoche": 15,
+        "Camas Totales": 4,
+        "Camas ocupadas": 0,
+
+	}
+
+]
