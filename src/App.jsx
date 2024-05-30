@@ -5,7 +5,7 @@ import './App.css';
 import MapWithRoutes from './components/Map/MapWithRoutes';
 import Login from "./components/login/Login"; // Asegúrate de que la ruta del componente Login sea correcta
 import Buttons from './components/rutebotton/rutebotton';
-import Navbar from './components/navbar/Navbar';
+import Navbar from './components/navbar/navbar';
 import routes from './components/Map/routes.jsx';
 
 function App() {
@@ -70,5 +70,6 @@ function App() {
     </>
   );
 }
+
 
 export default App;
