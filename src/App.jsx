@@ -1,76 +1,95 @@
-
 // app.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import MapWithRoutes from './components/Map/MapWithRoutes';
 import Login from "./components/login/Login"; // Asegúrate de que la ruta del componente Login sea correcta
 import Buttons from './components/rutebotton/rutebotton';
 import Navbar from './components/navbar/navbar';
 import routes from './components/Map/routes.jsx';
+import Grid from './components/grid/Grid';
+import './styles/styles.css';
+import FormularioAnfitriones from './components/FormularioAnfitriones/FormularioAnfitriones';
+
 
 function App() {
-  const [selectedRouteLabel, setSelectedRouteLabel] = useState('Camino Francés');
-  const [selectedRouteCoordinates, setSelectedRouteCoordinates] = useState(routes.caminoFrancesCoordinates);
+  const [selectedRoute, setSelectedRoute] = useState(routes.caminoFrancesCoordinates);
+  const [camino, setCamino] = useState('Camino Francés');
+  console.log("El camino en app.jsx es:", camino)
 
-  useEffect(() => {
-    switch (selectedRouteLabel) {
+  const handleRouteChange = (routeLabel) => {
+    switch (routeLabel) {
       case 'Camino Francés':
-        setSelectedRouteCoordinates(routes.caminoFrancesCoordinates);
+        setCamino("Camino Francés");
+        setSelectedRoute(routes.caminoFrancesCoordinates);
         break;
       case 'Camino Primitivo':
-        setSelectedRouteCoordinates(routes.caminoPrimitivoCoordinates);
+        setCamino("Camino Primitivo");
+        setSelectedRoute(routes.caminoPrimitivoCoordinates);
         break;
       case 'Camino del Norte':
-        setSelectedRouteCoordinates(routes.caminoNorteCoordinates);
+        setCamino("Camino del Norte");
+        setSelectedRoute(routes.caminoNorteCoordinates);
         break;
       case 'Via de la Plata':
-        setSelectedRouteCoordinates(routes.viaDeLaPlataCoordinates);
+        setCamino("Via de la Plata");
+        setSelectedRoute(routes.viaDeLaPlataCoordinates);
         break;
       case 'Camino Sanabrés':
-        setSelectedRouteCoordinates(routes.caminoSanabresCoordinates);
+        setCamino("Camino Sanabrés");
+        setSelectedRoute(routes.caminoSanabresCoordinates);
         break;
       case 'Camino Vasco':
-        setSelectedRouteCoordinates(routes.caminoVascoCoordinates);
+        setCamino("Camino Vasco");
+        setSelectedRoute(routes.caminoVascoCoordinates);
         break;
       case 'Camino Portugués':
-        setSelectedRouteCoordinates(routes.caminoPortuguesCoordinates);
+        setCamino("Camino Portugués");
+        setSelectedRoute(routes.caminoPortuguesCoordinates);
         break;
       case 'Camino Catalán por San Juan de la Peña':
-        setSelectedRouteCoordinates(routes.caminoCatalanCoordinates);
+        setCamino("Camino Catalán por San Juan de la Peña");
+        setSelectedRoute(routes.caminoCatalanCoordinates);
         break;
       case 'Camino Baztanés':
-        setSelectedRouteCoordinates(routes.caminoBaztanesCoordinates);
+        setCamino("Camino Baztanés");
+        setSelectedRoute(routes.caminoBaztanesCoordinates);
         break;
       case 'Camino Inglés':
-        setSelectedRouteCoordinates(routes.caminoInglesCoordinates);
+        setCamino("Camino Inglés");
+        setSelectedRoute(routes.caminoInglesCoordinates);
         break;
       case 'Camino de San Salvador':
-        setSelectedRouteCoordinates(routes.caminoSanSalvadorCoordinates);
+        setCamino("Camino de San Salvador");
+        setSelectedRoute(routes.caminoSanSalvadorCoordinates);
         break;
       case 'Epílogo a Fisterra y Muxía':
-        setSelectedRouteCoordinates(routes.epilogoFisterraMuxiaCoordinates);
+        setCamino("Epílogo a Fisterra y Muxía");
+        setSelectedRoute(routes.epilogoFisterraMuxiaCoordinates);
         break;
       default:
-        setSelectedRouteCoordinates(routes.caminoFrancesCoordinates);
+        setSelectedRoute(routes.caminoFrancesCoordinates);
     }
-  }, [selectedRouteLabel]);
+  };
 
   return (
     <>
-      <div className='general'>
+      <div>
         <Navbar/>
         <h1>Inicia Sesion</h1>
         <Login />
         <article className="map-outer">
-          <h2>{selectedRouteLabel}</h2>
-          <MapWithRoutes coordinates={selectedRouteCoordinates}/>
+          <h2>{camino}</h2>
+          <MapWithRoutes coordinates={selectedRoute} camino={camino}/>
         </article>
+        <FormularioAnfitriones />
         <section>
-          <Buttons onRouteChange={setSelectedRouteLabel} />
+          <Buttons onRouteChange={handleRouteChange} />
         </section>
+        <Grid />
       </div>
     </>
   );
 }
+
 
 export default App;

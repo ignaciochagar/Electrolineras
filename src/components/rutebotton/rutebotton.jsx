@@ -1,17 +1,31 @@
-// Buttons.jsx
 import React from 'react';
-import { buttonsData } from './rutebottonConfig';
+
+import { buttonsData, handleClick } from './rutebottonConfig';
+
+
 
 const Buttons = ({ onRouteChange }) => {
+
   return (
-    <div className='botonescamino'>
+
+    <div>
+
       {buttonsData.map(button => (
-        <button key={button.id} onClick={() => onRouteChange(button.label)}>
+
+        <button key={button.id} onClick={() => handleClick(button.label, onRouteChange)}>
+
           {button.label}
+
         </button>
+
       ))}
+
     </div>
+
   );
+
 };
+
+
 
 export default Buttons;

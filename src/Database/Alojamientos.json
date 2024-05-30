@@ -1,0 +1,13 @@
+[
+	{
+        "Alojamiento_id" : 1,
+        "hostalname" : "Villa reactor",
+        "latitud" :  43.2555473676632, 
+        "longitud" :  -2.9224467716968703,
+        "camino" : "Camino Francés",
+        "provincia" :  "Bizkaia",
+        "precioNoche": 15,
+        "camasTotales": 4,
+        "camasocupadas": 0
+	}
+]
