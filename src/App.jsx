@@ -8,6 +8,9 @@ import Buttons from './components/rutebotton/rutebotton';
 import Navbar from './components/navbar/navbar';
 import routes from './components/Map/routes.jsx';
 
+import Grid from './components/grid/Grid';
+import './styles/styles.css';
+
 function App() {
   const [selectedRoute, setSelectedRoute] = useState(routes.caminoFrancesCoordinates);
 
@@ -66,6 +69,25 @@ function App() {
         <section>
           <Buttons onRouteChange={handleRouteChange} />
         </section>
+        <Navbar />
+        <h1>Inicia Sesion</h1>
+
+        <Login /> {/* Renderiza el componente Login aquí */}
+
+        <article className="map-outer">
+
+          <MapWithRoutes
+            title="Camino de Santiago"
+          />
+
+        </article>
+
+        <section>
+
+          <Buttons />
+
+        </section>
+        <Grid />
       </div>
     </>
   );
