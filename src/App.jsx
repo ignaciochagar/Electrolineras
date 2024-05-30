@@ -7,6 +7,8 @@ import Login from "./components/login/Login"; // Asegúrate de que la ruta del c
 import Buttons from './components/rutebotton/rutebotton';
 import Navbar from './components/navbar/navbar';
 import routes from './components/Map/routes.jsx';
+import Grid from './components/grid/Grid';
+import './styles/styles.css';
 import FormularioAnfitriones from './components/FormularioAnfitriones/FormularioAnfitriones';
 
 
@@ -79,12 +81,11 @@ function App() {
         <article className="map-outer">
           <MapWithRoutes coordinates={selectedRoute} camino={camino}/>
         </article>
+        <FormularioAnfitriones />
         <section>
           <Buttons onRouteChange={handleRouteChange} />
         </section>
-        <section>
-          <FormularioAnfitriones  />
-        </section>
+        <Grid />
       </div>
     </>
   );
