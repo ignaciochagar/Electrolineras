@@ -10,8 +10,8 @@ function Login() {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [passwordRepeatError, setPasswordRepeatError] = useState('');
-  const [isRegistering, setIsRegistering] = useState(false); // Estado para controlar si se está en el modo de registro o inicio de sesión
-
+  const [isRegistering, setIsRegistering] = useState(false); 
+  
   useEffect(() => {
     const validateEmail = () => {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
