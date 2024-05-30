@@ -78,6 +78,7 @@ function App() {
         <h1>Inicia Sesion</h1>
         <Login />
         <article className="map-outer">
+          <h2>{camino}</h2>
           <MapWithRoutes coordinates={selectedRoute} camino={camino}/>
         </article>
         <FormularioAnfitriones />
