@@ -1,8 +1,9 @@
+// Navbar.jsx
 import React from 'react';
 import { FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
 import './Navbar.css';
 
-const Navbar = () => {
+const Navbar = ({ onViewChange }) => {
   return (
     <nav className="navbar">
       <div className="navbar-content">
@@ -19,7 +20,15 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navbar-icons">
-        <FaSignInAlt className="icon" title="Login" />
+        <button onClick={() => onViewChange('map')} className="icon" title="Mapa">
+          Mapa
+        </button>
+        <button onClick={() => onViewChange('register')} className="icon" title="Registro de Alojamientos">
+          Registro
+        </button>
+        <button onClick={() => onViewChange('grid')} className="icon" title="Tarjetas de Alojamientos">
+          Tarjetas
+        </button>
         <FaSignOutAlt className="icon" title="Logout" />
       </div>
     </nav>
@@ -27,4 +36,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

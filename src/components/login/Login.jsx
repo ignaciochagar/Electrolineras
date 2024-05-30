@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import "../../App.css";
 import usersData from "../../Database/Users.json";
 
-
-function Login() {
+function Login({ onLogin }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordRepeat, setPasswordRepeat] = useState('');
@@ -66,6 +65,7 @@ function Login() {
     if (user && user.password === password) {
       // Inicio de sesión exitoso
       alert('Inicio de sesión exitoso');
+      onLogin();  // Notificar al componente App sobre el inicio de sesión exitoso
     } else {
       // Credenciales incorrectas
       alert('Credenciales incorrectas');

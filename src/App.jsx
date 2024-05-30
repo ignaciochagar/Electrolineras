@@ -1,8 +1,8 @@
-// app.jsx
+// App.jsx
 import React, { useState } from 'react';
 import './App.css';
 import MapWithRoutes from './components/Map/MapWithRoutes';
-import Login from "./components/login/Login"; // Asegúrate de que la ruta del componente Login sea correcta
+import Login from "./components/login/Login"; 
 import Buttons from './components/rutebotton/rutebotton';
 import Navbar from './components/navbar/navbar';
 import routes from './components/Map/routes.jsx';
@@ -10,11 +10,11 @@ import Grid from './components/grid/Grid';
 import './styles/styles.css';
 import FormularioAnfitriones from './components/FormularioAnfitriones/FormularioAnfitriones';
 
-
 function App() {
   const [selectedRoute, setSelectedRoute] = useState(routes.caminoFrancesCoordinates);
   const [camino, setCamino] = useState('Camino Francés');
-  console.log("El camino en app.jsx es:", camino)
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [currentView, setCurrentView] = useState('map');
 
   const handleRouteChange = (routeLabel) => {
     switch (routeLabel) {
@@ -71,25 +71,47 @@ function App() {
     }
   };
 
+  const handleLogin = () => {
+    setIsAuthenticated(true);
+  };
+
+  const handleViewChange = (view) => {
+    setCurrentView(view);
+  };
+
   return (
     <>
       <div>
-        <Navbar/>
-        <h1>Inicia Sesion</h1>
-        <Login />
-        <article className="map-outer">
-          <h2>{camino}</h2>
-          <MapWithRoutes coordinates={selectedRoute} camino={camino}/>
-        </article>
-        <FormularioAnfitriones />
-        <section>
-          <Buttons onRouteChange={handleRouteChange} />
-        </section>
-        <Grid />
+        <Navbar onViewChange={handleViewChange} />
+        {!isAuthenticated ? (
+          <>
+            <h1>Inicia Sesion</h1>
+            <Login onLogin={handleLogin} />
+          </>
+        ) : (
+          <>
+            {currentView === 'map' && (
+              <article className="map-outer">
+                <h2>{camino}</h2>
+                <MapWithRoutes coordinates={selectedRoute} camino={camino} />
+                <Buttons onRouteChange={handleRouteChange} />
+              </article>
+            )}
+            {currentView === 'register' && (
+              <section>
+                <FormularioAnfitriones />
+              </section>
+            )}
+            {currentView === 'grid' && (
+              <section>
+                <Grid />
+              </section>
+            )}
+          </>
+        )}
       </div>
     </>
   );
 }
-
 
 export default App;
