@@ -1,6 +1,6 @@
 
 // app.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import MapWithRoutes from './components/Map/MapWithRoutes';
 import Login from "./components/login/Login"; // Asegúrate de que la ruta del componente Login sea correcta
@@ -9,50 +9,51 @@ import Navbar from './components/navbar/Navbar';
 import routes from './components/Map/routes.jsx';
 
 function App() {
-  const [selectedRoute, setSelectedRoute] = useState(routes.caminoFrancesCoordinates);
+  const [selectedRouteLabel, setSelectedRouteLabel] = useState('Camino Francés');
+  const [selectedRouteCoordinates, setSelectedRouteCoordinates] = useState(routes.caminoFrancesCoordinates);
 
-  const handleRouteChange = (routeLabel) => {
-    switch (routeLabel) {
+  useEffect(() => {
+    switch (selectedRouteLabel) {
       case 'Camino Francés':
-        setSelectedRoute(routes.caminoFrancesCoordinates);
+        setSelectedRouteCoordinates(routes.caminoFrancesCoordinates);
         break;
       case 'Camino Primitivo':
-        setSelectedRoute(routes.caminoPrimitivoCoordinates);
+        setSelectedRouteCoordinates(routes.caminoPrimitivoCoordinates);
         break;
       case 'Camino del Norte':
-        setSelectedRoute(routes.caminoNorteCoordinates);
+        setSelectedRouteCoordinates(routes.caminoNorteCoordinates);
         break;
       case 'Via de la Plata':
-        setSelectedRoute(routes.viaDeLaPlataCoordinates);
+        setSelectedRouteCoordinates(routes.viaDeLaPlataCoordinates);
         break;
       case 'Camino Sanabrés':
-        setSelectedRoute(routes.caminoSanabresCoordinates);
+        setSelectedRouteCoordinates(routes.caminoSanabresCoordinates);
         break;
       case 'Camino Vasco':
-        setSelectedRoute(routes.caminoVascoCoordinates);
+        setSelectedRouteCoordinates(routes.caminoVascoCoordinates);
         break;
       case 'Camino Portugués':
-        setSelectedRoute(routes.caminoPortuguesCoordinates);
+        setSelectedRouteCoordinates(routes.caminoPortuguesCoordinates);
         break;
       case 'Camino Catalán por San Juan de la Peña':
-        setSelectedRoute(routes.caminoCatalanCoordinates);
+        setSelectedRouteCoordinates(routes.caminoCatalanCoordinates);
         break;
       case 'Camino Baztanés':
-        setSelectedRoute(routes.caminoBaztanesCoordinates);
+        setSelectedRouteCoordinates(routes.caminoBaztanesCoordinates);
         break;
       case 'Camino Inglés':
-        setSelectedRoute(routes.caminoInglesCoordinates);
+        setSelectedRouteCoordinates(routes.caminoInglesCoordinates);
         break;
       case 'Camino de San Salvador':
-        setSelectedRoute(routes.caminoSanSalvadorCoordinates);
+        setSelectedRouteCoordinates(routes.caminoSanSalvadorCoordinates);
         break;
       case 'Epílogo a Fisterra y Muxía':
-        setSelectedRoute(routes.epilogoFisterraMuxiaCoordinates);
+        setSelectedRouteCoordinates(routes.epilogoFisterraMuxiaCoordinates);
         break;
       default:
-        setSelectedRoute(routes.caminoFrancesCoordinates);
+        setSelectedRouteCoordinates(routes.caminoFrancesCoordinates);
     }
-  };
+  }, [selectedRouteLabel]);
 
   return (
     <>
@@ -61,10 +62,10 @@ function App() {
         <h1>Inicia Sesion</h1>
         <Login />
         <article className="map-outer">
-          <MapWithRoutes coordinates={selectedRoute} />
+          <MapWithRoutes coordinates={selectedRouteCoordinates} />
         </article>
         <section>
-          <Buttons onRouteChange={handleRouteChange} />
+          <Buttons onRouteChange={setSelectedRouteLabel} />
         </section>
       </div>
     </>
