@@ -1,144 +1,212 @@
-import { useState } from "react";
+import { useState, useEffect } from 'react';
+import alojamientos from "../../Database/Alojamientos.json";
+
 
 
 const Form = () => {
-    const [hostalname, setHostalname] = useState("");
-    const [latitud, setLatitud] = useState("");
-    const [longitud, setLongitud] = useState("");
-    const [precioNoche, setPrecioNoche] = useState("");
-    const [camino, setCamino] = useState("");
-    const [provincia, setProvincia] = useState("");
+  const [hostalname, setHostalname] = useState("");
+  const [latitud, setLatitud] = useState("");
+  const [longitud, setLongitud] = useState("");
+  const [precioNoche, setPrecioNoche] = useState("");
+  const [camino, setCamino] = useState("");
+  const [provincia, setProvincia] = useState("");
+  const [camasTotales, setCamasTotales] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
 
-    const [error,setError] = useState("");
+  useEffect(() => {
+    
+    const validateHostalname = () => {
+      const hostalYaRegistrado = alojamientos.some(alojamiento => alojamiento.hostalname === hostalname);
+      if (hostalYaRegistrado) {
+        setError("El nombre del alojamiento ya está registrado.");
+      } else {
+        setError('');
+      }
+    };
 
-    useEffect(() => {
-        const validateEmail = () => {
-          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          if (!emailRegex.test(email) && email !== '') {
-            setEmailError("El correo electrónico no es válido. Asegúrate de que esté en el formato correcto, como ejemplo@dominio.com.");
-          } else {
-            setEmailError('');
-          }
-        };
-    
-        const validatePassword = () => {
-          const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$/;
-          if (!passwordRegex.test(password) && password !== '') {
-            setPasswordError("La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un símbolo.");
-          } else {
-            setPasswordError('');
-          }
-        };
-    
-        const validatePasswordRepeat = () => {
-          if (passwordRepeat !== password && passwordRepeat !== '') {
-            setPasswordRepeatError("Las contraseñas no coinciden");
-          } else {
-            setPasswordRepeatError('');
-          }
-        };
-    
-        validateEmail();
-        validatePassword();
-        validatePasswordRepeat();
-      }, [email, password, passwordRepeat]);
-    
-      const handleEmailChange = (event) => {
-        setEmail(event.target.value);
-      };
-    
-      const handlePasswordChange = (event) => {
-        setPassword(event.target.value);
-      };
-    
-      const handlePasswordRepeatChange = (event) => {
-        setPasswordRepeat(event.target.value);
-      };
-    
-      const handleLogin = (event) => {
-        event.preventDefault();
-    
-        // Buscar el usuario por email
-        const user = usersData.find(user => user.email === email);
-    
-        // Verificar si el usuario existe y la contraseña coincide
-        if (user && user.password === password) {
-          // Inicio de sesión exitoso
-          alert('Inicio de sesión exitoso');
-        } else {
-          // Credenciales incorrectas
-          alert('Credenciales incorrectas');
-        }
-      };
-    
+    const validateLatitud = () => {
+      const latitudRegex = /^-?([1-8]?\d(\.\d+)?|90(\.0+)?)$/;
+      if (!latitudRegex.test(latitud) && latitud !== '') {
+        setError("La latitud no es válida. Debe estar en el rango de -90 a 90.");
+      } else {
+        setError('');
+      }
+    };
 
- return (
-    <section>
-        <form onSubmit={handleRegister}>
-          <div>
-            <label htmlFor="hostalName">Nombre del alojamiento:</label>
-            <input
-              type="text"
-              id="hostalName"
-              name="hostalName"
-              value={hostalName}
-              onChange={handleEmailChange}
-            />
-            {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
-          </div>
-          <div>
-            <label htmlFor="Password">Password:</label>
-            <input
-              type="password"
-              id="Password"
-              name="Password"
-              value={password}
-              onChange={handlePasswordChange}
-            />
-            {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
-          </div>
-          <div>
-            <label htmlFor="PasswordRepeat">Password Repeat:</label>
-            <input
-              type="password"
-              id="PasswordRepeat"
-              name="PasswordRepeat"
-              value={passwordRepeat}
-              onChange={handlePasswordRepeatChange}
-            />
-            {passwordRepeatError && <p style={{ color: 'red' }}>{passwordRepeatError}</p>}
-          </div>
-          <button type="submit">Registrarse</button>
-          <button type="button" onClick={handleToggleMode}>¿Ya tienes una cuenta? Inicia sesión aquí</button>
-        </form>
-        <form onSubmit={handleLogin}>
-          <div>
-            <label htmlFor="Email">Email:</label>
-            <input
-              type="text"
-              id="Email"
-              name="Email"
-              value={email}
-              onChange={handleEmailChange}
-            />
-            {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
-          </div>
-          <div>
-            <label htmlFor="Password">Password:</label>
-            <input
-              type="password"
-              id="Password"
-              name="Password"
-              value={password}
-              onChange={handlePasswordChange}
-            />
-            {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
-          </div>
-          <button type="submit">Iniciar sesión</button>
-          <button type="button" onClick={handleToggleMode}>¿No tienes una cuenta? Regístrate aquí</button>
-        </form>
-    </section>
+    const validateLongitud = () => {
+      const longitudRegex = /^-?([1-8]?\d(\.\d+)?|90(\.0+)?)$/;
+      if (!longitudRegex.test(longitud) && longitud !== '') {
+        setError("La longitud no es válida. Debe estar en el rango de -90 a 90.");
+      } else {
+        setError('');
+      }
+    };
+
+    const validatePrecioNoche = () => {
+      const precioNocheRegex = /^\d+(\.\d{1,2})?$/;
+      if (!precioNocheRegex.test(precioNoche) && precioNoche !== '') {
+        setError("El precio por noche no es válido. Debe ser un número.");
+      } else {
+        setError('');
+      }
+    };
+
+    const validateCamasTotales = () => {
+      const camasTotalesRegex = /^\d+$/;
+      if (!camasTotalesRegex.test(camasTotales) && camasTotales !== '') {
+        setError("El número de camas totales no es válido. Debe ser un número entero.");
+      } else {
+        setError('');
+      }
+    };
+    validateHostalname();
+    validateLatitud();
+    validateLongitud();
+    validatePrecioNoche();
+    validateCamasTotales();
+  }, [latitud, longitud, precioNoche, camasTotales]);
+
+  const handleHostalnameChange = (event) => {
+    setHostalname(event.target.value);
+  };
+
+  const handleLatitudChange = (event) => {
+    setLatitud(event.target.value);
+  };
+
+  const handleLongitudChange = (event) => {
+    setLongitud(event.target.value);
+  };
+
+  const handlePrecioNocheChange = (event) => {
+    setPrecioNoche(event.target.value);
+  };
+
+  const handleCaminoChange = (event) => {
+    setCamino(event.target.value);
+  };
+
+  const handleProvinciaChange = (event) => {
+    setProvincia(event.target.value);
+  };
+
+  const handleCamasTotalesChange = (event) => {
+    setCamasTotales(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (error === '') {
+      const maxId = Math.max(...alojamientos.map(alojamiento => alojamiento.Alojamiento_id));
+      const newId = maxId + 1;
+      const newAlojamiento = {
+          Alojamiento_id: newId,
+          hostalname,
+          latitud,
+          longitud,
+          camino,
+          provincia,
+          precioNoche,
+          camasTotales,
+          camasocupadas: 0
+
+      };
+      alojamientos.push(newAlojamiento)
+      alert('Formulario enviado correctamente');
+
+
+      // Aquí puedes manejar el envío del formulario, por ejemplo, enviarlo a un servidor o guardarlo en algún lugar
+      setSuccess(true);
+      setHostalname('');
+      setLatitud('');
+      setLongitud('');
+      setPrecioNoche('');
+      setCamino('');
+      setProvincia('');
+      setCamasTotales('');
+    } else {
+      alert('Por favor, corrige los errores antes de enviar el formulario');
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor="hostalname">Nombre del hostal:</label>
+        <input
+          type="text"
+          id="hostalname"
+          name="hostalname"
+          value={hostalname}
+          onChange={handleHostalnameChange}
+        />
+      </div>
+      <div>
+        <label htmlFor="latitud">Latitud:</label>
+        <input
+          type="text"
+          id="latitud"
+          name="latitud"
+          value={latitud}
+          onChange={handleLatitudChange}
+        />
+      </div>
+      <div>
+        <label htmlFor="longitud">Longitud:</label>
+        <input
+          type="text"
+          id="longitud"
+          name="longitud"
+          value={longitud}
+          onChange={handleLongitudChange}
+        />
+      </div>
+      <div>
+        <label htmlFor="precioNoche">Precio por noche:</label>
+        <input
+          type="text"
+          id="precioNoche"
+          name="precioNoche"
+          value={precioNoche}
+          onChange={handlePrecioNocheChange}
+        />
+      </div>
+      <div>
+        <label htmlFor="camino">Camino:</label>
+        <input
+          type="text"
+          id="camino"
+          name="camino"
+          value={camino}
+          onChange={handleCaminoChange}
+        />
+      </div>
+      <div>
+        <label htmlFor="provincia">Provincia:</label>
+        <input
+          type="text"
+          id="provincia"
+          name="provincia"
+          value={provincia}
+          onChange={handleProvinciaChange}
+        />
+      </div>
+      <div>
+        <label htmlFor="camasTotales">Camas Totales:</label>
+        <input
+          type="text"
+          id="camasTotales"
+          name="camasTotales"
+          value={camasTotales}
+          onChange={handleCamasTotalesChange}
+        />
+      </div>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {success && <p style={{ color: 'green' }}>Formulario enviado con éxito!</p>}
+      <button type="submit">Publicar</button>
+    </form>
   );
-}
+};
 
 export default Form;
