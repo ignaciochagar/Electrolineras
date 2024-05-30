@@ -4,7 +4,7 @@ import { buttonsData } from './rutebottonConfig';
 
 const Buttons = ({ onRouteChange }) => {
   return (
-    <div>
+    <div className='botonescamino'>
       {buttonsData.map(button => (
         <button key={button.id} onClick={() => onRouteChange(button.label)}>
           {button.label}
