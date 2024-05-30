@@ -17,25 +17,25 @@ function App() {
   return (
     <>
       <div>
-      <Navbar/>
-      <h1>Inicia Sesion</h1>
+        <Navbar />
+        <h1>Inicia Sesion</h1>
 
-      <Login /> {/* Renderiza el componente Login aquí */}
+        <Login /> {/* Renderiza el componente Login aquí */}
 
-      <article className="map-outer">
+        <article className="map-outer">
 
-        <MapWithRoutes
-        title="Camino de Santiago"
-         />
+          <MapWithRoutes
+            title="Camino de Santiago"
+          />
 
-      </article>
+        </article>
 
-      <section>
+        <section>
 
-        <Buttons />
+          <Buttons />
 
-      </section>
-      <Grid />
+        </section>
+        <Grid />
       </div>
     </>
   );
