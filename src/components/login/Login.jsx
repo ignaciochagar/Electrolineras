@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import "./login.css";
 import usersData from "../../Database/Users.json";
 
 function Login({ onLogin }) {
