@@ -27,7 +27,7 @@ const Navbar = ({ onViewChange }) => {
           Registro
         </button>
         <button onClick={() => onViewChange('grid')} className="icon" title="Tarjetas de Alojamientos">
-          Tarjetas
+          Albergues
         </button>
         <FaSignOutAlt className="icon" title="Logout" />
       </div>

@@ -36,7 +36,7 @@ const MapWithRoutes = ({ coordinates, camino }) => {
   return (
     <section className='map'>
       <button onClick={toggleMarkers}>
-        {showMarkers ? 'Ocultar Chinchetas' : 'Mostrar Chinchetas'}
+        {showMarkers ? 'Ocultar Albergues' : 'Mostrar Albergues'}
       </button>
       <MapContainer center={[40.43731467230963, -3.689847347507708]} zoom={6} style={{ height: '550px', width: '1000px' }}>
         <TileLayer
