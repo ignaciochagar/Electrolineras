@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import "../../App.css";
 import usersData from "../../Database/Users.json";
 
 function Login({ onLogin }) {
@@ -135,7 +134,7 @@ function Login({ onLogin }) {
               value={email}
               onChange={handleEmailChange}
             />
-            {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
+            {emailError && <p>{emailError}</p>}
           </div>
           <div>
             <label htmlFor="Password">Password:</label>
@@ -146,7 +145,7 @@ function Login({ onLogin }) {
               value={password}
               onChange={handlePasswordChange}
             />
-            {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
+            {passwordError && <p>{passwordError}</p>}
           </div>
           <div>
             <label htmlFor="PasswordRepeat">Password Repeat:</label>
@@ -157,7 +156,7 @@ function Login({ onLogin }) {
               value={passwordRepeat}
               onChange={handlePasswordRepeatChange}
             />
-            {passwordRepeatError && <p style={{ color: 'red' }}>{passwordRepeatError}</p>}
+            {passwordRepeatError && <p>{passwordRepeatError}</p>}
           </div>
           <button type="submit">Registrarse</button>
           <button type="button" onClick={handleToggleMode}>¿Ya tienes una cuenta? Inicia sesión aquí</button>
@@ -173,7 +172,7 @@ function Login({ onLogin }) {
               value={email}
               onChange={handleEmailChange}
             />
-            {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
+            {emailError && <p>{emailError}</p>}
           </div>
           <div>
             <label htmlFor="Password">Password:</label>
@@ -184,9 +183,9 @@ function Login({ onLogin }) {
               value={password}
               onChange={handlePasswordChange}
             />
-            {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
+            {passwordError && <p>{passwordError}</p>}
           </div>
-          <button type="submit">Iniciar sesión</button>
+          <button className="iniciar-sesion" type="submit">Iniciar sesión</button>
           <button type="button" onClick={handleToggleMode}>¿No tienes una cuenta? Regístrate aquí</button>
         </form>
       )}

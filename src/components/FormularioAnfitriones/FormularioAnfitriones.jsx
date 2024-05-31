@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import alojamientos from "../../Database/Alojamientos.json";
 
-
-
 const Form = () => {
   const [hostalname, setHostalname] = useState("");
   const [latitud, setLatitud] = useState("");
@@ -15,7 +13,6 @@ const Form = () => {
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
-    
     const validateHostalname = () => {
       const hostalYaRegistrado = alojamientos.some(alojamiento => alojamiento.hostalname === hostalname);
       if (hostalYaRegistrado) {
@@ -65,7 +62,7 @@ const Form = () => {
     validateLongitud();
     validatePrecioNoche();
     validateCamasTotales();
-  }, [latitud, longitud, precioNoche, camasTotales]);
+  }, [hostalname, latitud, longitud, precioNoche, camasTotales]);
 
   const handleHostalnameChange = (event) => {
     setHostalname(event.target.value);
@@ -103,20 +100,17 @@ const Form = () => {
       const newAlojamiento = {
           Alojamiento_id: newId,
           hostalname,
-          latitud,
-          longitud,
+          latitud: parseFloat(latitud),
+          longitud: parseFloat(longitud),
           camino,
           provincia,
           precioNoche,
-          camasTotales,
+          camasTotales: parseInt(camasTotales, 10),
           camasocupadas: 0
-
       };
-      alojamientos.push(newAlojamiento)
+      alojamientos.push(newAlojamiento);
       alert('Formulario enviado correctamente');
 
-
-      // Aquí puedes manejar el envío del formulario, por ejemplo, enviarlo a un servidor o guardarlo en algún lugar
       setSuccess(true);
       setHostalname('');
       setLatitud('');

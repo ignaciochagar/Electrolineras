@@ -1,13 +1,157 @@
 [
-	{
-        "Alojamiento_id" : 1,
-        "hostalname" : "Villa reactor",
-        "latitud" :  43.2555473676632, 
-        "longitud" :  -2.9224467716968703,
-        "camino" : "Camino Francés",
-        "provincia" :  "Bizkaia",
-        "precioNoche": 15,
-        "camasTotales": 4,
-        "camasocupadas": 0
-	}
-]
+        {
+            "Alojamiento_id": 1,
+            "hostalname": "Villa reactor",
+            "latitud": 43.2555473676632,
+            "longitud": -2.9224467716968703,
+            "camino": "Camino Francés",
+            "provincia": "Bizkaia",
+            "precioNoche": 15,
+            "camasTotales": 4,
+            "camasocupadas": 0
+        },
+        {
+            "Alojamiento_id": 2,
+            "hostalname": "Albergue La Casa Magica",
+            "latitud": 42.667748,
+            "longitud": -1.119934,
+            "camino": "Camino Francés",
+            "provincia": "Navarra",
+            "precioNoche": 10,
+            "camasTotales": 10,
+            "camasocupadas": 0
+        },
+        {
+            "Alojamiento_id": 3,
+            "hostalname": "Albergue de Peregrinos Gaucelmo",
+            "latitud": 42.453065,
+            "longitud": -6.058785,
+            "camino": "Camino Francés",
+            "provincia": "León",
+            "precioNoche": 0,
+            "camasTotales": 12,
+            "camasocupadas": 0
+        },
+        {
+            "Alojamiento_id": 4,
+            "hostalname": "Albergue de la Piedra",
+            "latitud": 43.414939,
+            "longitud": -4.040161,
+            "camino": "Camino del Norte",
+            "provincia": "Asturias",
+            "precioNoche": 15,
+            "camasTotales": 8,
+            "camasocupadas": 0
+        },
+        {
+            "Alojamiento_id": 5,
+            "hostalname": "Albergue El Salvador",
+            "latitud": 43.350464,
+            "longitud": -6.898557,
+            "camino": "Camino Primitivo",
+            "provincia": "Asturias",
+            "precioNoche": 12,
+            "camasTotales": 6,
+            "camasocupadas": 0
+        },
+        {
+            "Alojamiento_id": 6,
+            "hostalname": "Albergue Quinta Estrada Romana",
+            "latitud": 42.467242,
+            "longitud": -8.650223,
+            "camino": "Camino Portugués",
+            "provincia": "Pontevedra",
+            "precioNoche": 15,
+            "camasTotales": 10,
+            "camasocupadas": 0
+        },
+        {
+            "Alojamiento_id": 7,
+            "hostalname": "Albergue San Roque",
+            "latitud": 43.362343,
+            "longitud": -8.411540,
+            "camino": "Camino Inglés",
+            "provincia": "A Coruña",
+            "precioNoche": 8,
+            "camasTotales": 10,
+            "camasocupadas": 0
+        },
+        {
+            "Alojamiento_id": 8,
+            "hostalname": "Albergue Triana Backpackers",
+            "latitud": 37.380474,
+            "longitud": -6.004942,
+            "camino": "Vía de la Plata",
+            "provincia": "Sevilla",
+            "precioNoche": 18,
+            "camasTotales": 14,
+            "camasocupadas": 0
+        },
+        {
+            "Alojamiento_id": 9,
+            "hostalname": "Albergue Finistellae",
+            "latitud": 42.908362,
+            "longitud": -9.264862,
+            "camino": "Camino de Finisterre",
+            "provincia": "A Coruña",
+            "precioNoche": 14,
+            "camasTotales": 8,
+            "camasocupadas": 0
+        },
+        {
+            "Alojamiento_id": 10,
+            "hostalname": "Albergue A Reboleira",
+            "latitud": 42.757383,
+            "longitud": -7.282220,
+            "camino": "Camino de Invierno",
+            "provincia": "Lugo",
+            "precioNoche": 12,
+            "camasTotales": 10,
+            "camasocupadas": 0
+        },
+        {
+            "Alojamiento_id": 11,
+            "hostalname": "Albergue de Lebeña",
+            "latitud": 43.230318,
+            "longitud": -4.637654,
+            "camino": "Camino Lebaniego",
+            "provincia": "Cantabria",
+            "precioNoche": 10,
+            "camasTotales": 6,
+            "camasocupadas": 0
+        },
+        {
+            "Alojamiento_id": 12,
+            "hostalname": "Albergue Inturjoven",
+            "latitud": 37.767518,
+            "longitud": -3.788217,
+            "camino": "Camino Mozárabe",
+            "provincia": "Jaén",
+            "precioNoche": 20,
+            "camasTotales": 12,
+            "camasocupadas": 0
+        },
+        {
+            "Alojamiento_id": 13,
+            "hostalname": "Albergue La Morada",
+            "latitud": 42.340531,
+            "longitud": -3.696906,
+            "camino": "Camino de la Lana",
+            "provincia": "Burgos",
+            "precioNoche": 12,
+            "camasTotales": 8,
+            "camasocupadas": 0
+        },
+        {
+            "Alojamiento_id": 14,
+            "hostalname": "Albergue Aysa",
+            "latitud": 42.566391,
+            "longitud": -0.389613,
+            "camino": "Camino Aragonés",
+            "provincia": "Huesca",
+            "precioNoche": 10,
+            "camasTotales": 8,
+            "camasocupadas": 0
+        }
+    ]
+    
