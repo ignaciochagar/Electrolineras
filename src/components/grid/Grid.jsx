@@ -3,8 +3,7 @@ import React from 'react';
 import Card from '../card/Card';
 import { albergues } from '../../data/albergues.js';
 
-const Grid = () => {
-  console.log("albergues", albergues)
+const Grid = ({ onAlbergueClick }) => {
   return (
     <div className="grid">
       {albergues.map((albergue, index) => (
@@ -15,10 +14,12 @@ const Grid = () => {
           provincia={albergue.provincia}
           precio={albergue.precio}
           imagen={albergue.imagen}
+          onClick={() => onAlbergueClick(albergue.camino)} // Pasa el camino al onClick
         />
       ))}
     </div>
   );
 };
+
 
 export default Grid;

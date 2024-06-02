@@ -71,6 +71,11 @@ function App() {
     }
   };
 
+  const handleAlbergueClick = (camino) => {
+    handleRouteChange(camino); // Cambia la ruta según el albergue
+    setCurrentView('map'); // Cambia la vista al mapa
+  };
+
   const handleLogin = () => {
     setIsAuthenticated(true);
   };
@@ -104,7 +109,7 @@ function App() {
             )}
             {currentView === 'grid' && (
               <section>
-                <Grid />
+                <Grid onAlbergueClick={handleAlbergueClick} />
               </section>
             )}
           </>
