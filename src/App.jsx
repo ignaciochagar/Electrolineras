@@ -1,78 +1,42 @@
-// App.jsx
 import React, { useState } from 'react';
 import './App.css';
 import MapWithRoutes from './components/Map/MapWithRoutes';
 import Login from "./components/login/Login"; 
 import Buttons from './components/rutebotton/rutebotton';
 import Navbar from './components/navbar/navbar';
-import routes from './components/Map/routes.jsx';
+import electrolineras from './components/Map/electrolineras.jsx';
 import Grid from './components/grid/Grid';
 import './styles/styles.css';
 import FormularioAnfitriones from './components/FormularioAnfitriones/FormularioAnfitriones';
 
 function App() {
-  const [selectedRoute, setSelectedRoute] = useState(routes.caminoFrancesCoordinates);
-  const [camino, setCamino] = useState('Camino Francés');
+  const [selectedElectrolinera, setSelectedElectrolinera] = useState(electrolineras.toledoElectrolinera);
+  const [provincia, setProvincia] = useState('Toledo');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentView, setCurrentView] = useState('map');
 
-  const handleRouteChange = (routeLabel) => {
-    switch (routeLabel) {
-      case 'Camino Francés':
-        setCamino("Camino Francés");
-        setSelectedRoute(routes.caminoFrancesCoordinates);
+  const handleProvinciaChange = (provinciaLabel) => {
+    switch (provinciaLabel) {
+      case 'Toledo':
+        setProvincia("Toledo");
+        setSelectedElectrolinera(electrolineras.toledoElectrolinera);
         break;
-      case 'Camino Primitivo':
-        setCamino("Camino Primitivo");
-        setSelectedRoute(routes.caminoPrimitivoCoordinates);
+      case 'Álava':
+        setProvincia("Álava");
+        setSelectedElectrolinera(electrolineras.alavaElectrolinera);
         break;
-      case 'Camino del Norte':
-        setCamino("Camino del Norte");
-        setSelectedRoute(routes.caminoNorteCoordinates);
+      case 'Albacete':
+        setProvincia("Albacete");
+        setSelectedElectrolinera(electrolineras.albaceteElectrolinera);
         break;
-      case 'Via de la Plata':
-        setCamino("Via de la Plata");
-        setSelectedRoute(routes.viaDeLaPlataCoordinates);
-        break;
-      case 'Camino Sanabrés':
-        setCamino("Camino Sanabrés");
-        setSelectedRoute(routes.caminoSanabresCoordinates);
-        break;
-      case 'Camino Vasco':
-        setCamino("Camino Vasco");
-        setSelectedRoute(routes.caminoVascoCoordinates);
-        break;
-      case 'Camino Portugués':
-        setCamino("Camino Portugués");
-        setSelectedRoute(routes.caminoPortuguesCoordinates);
-        break;
-      case 'Camino Catalán por San Juan de la Peña':
-        setCamino("Camino Catalán por San Juan de la Peña");
-        setSelectedRoute(routes.caminoCatalanCoordinates);
-        break;
-      case 'Camino Baztanés':
-        setCamino("Camino Baztanés");
-        setSelectedRoute(routes.caminoBaztanesCoordinates);
-        break;
-      case 'Camino Inglés':
-        setCamino("Camino Inglés");
-        setSelectedRoute(routes.caminoInglesCoordinates);
-        break;
-      case 'Camino de San Salvador':
-        setCamino("Camino de San Salvador");
-        setSelectedRoute(routes.caminoSanSalvadorCoordinates);
-        break;
-      case 'Epílogo a Fisterra y Muxía':
-        setCamino("Epílogo a Fisterra y Muxía");
-        setSelectedRoute(routes.epilogoFisterraMuxiaCoordinates);
-        break;
+      // Añade más casos para otras provincias si es necesario
       default:
-        setSelectedRoute(routes.caminoFrancesCoordinates);
+        setSelectedElectrolinera(electrolineras.toledoElectrolinera);
     }
   };
 
-  const handleAlbergueClick = (camino) => {
-    handleRouteChange(camino); // Cambia la ruta según el albergue
+  const handleElectrolineraClick = (provincia) => {
+    handleProvinciaChange(provincia); // Cambia la provincia según la electrolinera
     setCurrentView('map'); // Cambia la vista al mapa
   };
 
@@ -97,9 +61,9 @@ function App() {
           <>
             {currentView === 'map' && (
               <article className="map-outer">
-                <h2>{camino}</h2>
-                <MapWithRoutes coordinates={selectedRoute} camino={camino} />
-                <Buttons onRouteChange={handleRouteChange} />
+                <h2>{provincia}</h2>
+                <MapWithRoutes electrolineras={selectedElectrolinera} provincia={provincia} />
+                <Buttons onProvinciaChange={handleProvinciaChange} />
               </article>
             )}
             {currentView === 'register' && (
@@ -109,7 +73,7 @@ function App() {
             )}
             {currentView === 'grid' && (
               <section>
-                <Grid onAlbergueClick={handleAlbergueClick} />
+                <Grid onElectrolineraClick={handleElectrolineraClick} />
               </section>
             )}
           </>
