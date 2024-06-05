@@ -1,0 +1,15 @@
+export const electrolineras = [
+    { nombre: 'Electrolinera 1', provincia: 'Navarra', precio: '0.25€/kWh', direccion: 'Calle Mayor, 123', ciudad: 'Pamplona' },
+    { nombre: 'Electrolinera 2', provincia: 'León', precio: '0.30€/kWh', direccion: 'Avenida Libertad, 456', ciudad: 'León' },
+    { nombre: 'Electrolinera 3', provincia: 'Asturias', precio: '0.28€/kWh', direccion: 'Calle del Mar, 789', ciudad: 'Gijón' },
+    { nombre: 'Electrolinera 4', provincia: 'Asturias', precio: '0.29€/kWh', direccion: 'Plaza del Ayuntamiento, 10', ciudad: 'Oviedo' },
+    { nombre: 'Electrolinera 5', provincia: 'Pontevedra', precio: '0.27€/kWh', direccion: 'Calle Real, 345', ciudad: 'Vigo' },
+    { nombre: 'Electrolinera 6', provincia: 'A Coruña', precio: '0.26€/kWh', direccion: 'Rúa das Flores, 678', ciudad: 'A Coruña' },
+    { nombre: 'Electrolinera 7', provincia: 'Sevilla', precio: '0.35€/kWh', direccion: 'Calle Sevilla, 901', ciudad: 'Sevilla' },
+    { nombre: 'Electrolinera 8', provincia: 'A Coruña', precio: '0.31€/kWh', direccion: 'Plaza de España, 11', ciudad: 'Ferrol' },
+    { nombre: 'Electrolinera 9', provincia: 'Lugo', precio: '0.32€/kWh', direccion: 'Rúa das Burgas, 222', ciudad: 'Lugo' },
+    { nombre: 'Electrolinera 10', provincia: 'Cantabria', precio: '0.29€/kWh', direccion: 'Calle Santander, 333', ciudad: 'Santander' },
+    { nombre: 'Electrolinera 11', provincia: 'Jaén', precio: '0.33€/kWh', direccion: 'Calle Granada, 444', ciudad: 'Jaén' },
+    { nombre: 'Electrolinera 12', provincia: 'Burgos', precio: '0.28€/kWh', direccion: 'Avenida Bilbao, 555', ciudad: 'Burgos' },
+    { nombre: 'Electrolinera 13', provincia: 'Huesca', precio: '0.30€/kWh', direccion: 'Calle Zaragoza, 666', ciudad: 'Huesca' },
+];

@@ -1,18 +1,19 @@
 import React from 'react';
 
-const Card = ({ nombre, camino, provincia, precio, imagen, onClick }) => {
-  console.log("Llego aqui");
+const Card = ({ nombre, provincia, direccion, horario, puntosDeCarga, imagen, onClick }) => {
   return (
     <div className="card" onClick={onClick}>
-      <img src={(`../images/${imagen}`)} alt={nombre} className="card-image" />
+      <img src={require(`../images/${imagen}`).default} alt={nombre} className="card-image" /> {/* Usamos require para importar la imagen */}
       <div className="card-content">
         <h3>{nombre}</h3>
-        <p><strong>Camino:</strong> {camino}</p>
         <p><strong>Provincia:</strong> {provincia}</p>
-        <p><strong>Precio:</strong> {precio}</p>
+        <p><strong>Dirección:</strong> {direccion}</p>
+        <p><strong>Horario:</strong> {horario}</p>
+        <p><strong>Número de puntos de carga:</strong> {puntosDeCarga}</p>
       </div>
     </div>
   );
 };
 
 export default Card;
+

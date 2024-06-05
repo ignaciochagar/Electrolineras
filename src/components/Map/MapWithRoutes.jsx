@@ -1,34 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import alojamientos from "../../Database/Alojamientos.json";    
+import L from 'leaflet';
 import icono from "../../../public/img/greenMarker.png";
+import electrolineras from "../../Database/Electrolineras.json";
 
 const icon = new L.Icon({
   iconUrl: icono,
   iconSize: [32, 32],
-  iconAnchor: [16, 0], // Point of the icon which will correspond to marker's location
-  popupAnchor: [0, -12] // Point from which the popup should open relative to the iconAnchor
+  iconAnchor: [16, 0],
+  popupAnchor: [0, -12]
 });
 
-const MapWithRoutes = ({ coordinates, camino }) => {
-  const [filteredAlojamientos, setFilteredAlojamientos] = useState([]);
-  const [showMarkers, setShowMarkers] = useState(true); // Estado para controlar la visibilidad de los marcadores
+const MapWithRoutes = ({ coordinates, provincia }) => {
+  const [filteredElectrolineras, setFilteredElectrolineras] = useState([]);
+  const [showMarkers, setShowMarkers] = useState(true);
 
-  console.log("el camino es", camino);
+  console.log("La provincia es", provincia);
 
   useEffect(() => {
-    // Filtrar los alojamientos basados en el camino seleccionado
-    const alojamientosChinchetas = alojamientos.filter(alojamiento => alojamiento.camino === camino);
+    // Filtrar las electrolineras basadas en la provincia seleccionada
+    const electrolinerasChinchetas = electrolineras.payload.energyInfrastructureTable.energyInfrastructureSite.filter(
+      electrolinera => 
+        electrolinera.locationReference._locationReferenceExtension.facilityLocation.address.addressLine.some(
+          line => line.text.values.value.includes(`Provincia: ${provincia}`)
+        )
+    );
 
-    if (alojamientosChinchetas.length === 0) {
-      console.log(`No se encontraron alojamientos en el camino ${camino}`);
+    if (electrolinerasChinchetas.length === 0) {
+      console.log(`No se encontraron electrolineras en la provincia ${provincia}`);
     }
-    console.log("Alojamientos filtrados", alojamientosChinchetas);
-    setFilteredAlojamientos(alojamientosChinchetas);
-  }, [camino]);
+    console.log("Electrolineras filtradas", electrolinerasChinchetas);
+    setFilteredElectrolineras(electrolinerasChinchetas);
+  }, [provincia]);
 
-  // Función para alternar la visibilidad de los marcadores
   const toggleMarkers = () => {
     setShowMarkers(!showMarkers);
   };
@@ -36,26 +41,31 @@ const MapWithRoutes = ({ coordinates, camino }) => {
   return (
     <section className='map'>
       <button onClick={toggleMarkers}>
-        {showMarkers ? 'Ocultar Albergues' : 'Mostrar Albergues'}
+        {showMarkers ? 'Ocultar Electrolineras' : 'Mostrar Electrolineras'}
       </button>
       <MapContainer center={[40.43731467230963, -3.689847347507708]} zoom={6} style={{ height: '550px', width: '1000px' }}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
-        <Polyline positions={coordinates} color="blue" />
-        {showMarkers && filteredAlojamientos.map(alojamiento => (
+        
+        {showMarkers && filteredElectrolineras.map(electrolinera => (
           <Marker
-            key={alojamiento.Alojamiento_id}
-            position={[alojamiento.latitud, alojamiento.longitud]}
+            key={electrolinera.name.values.value}
+            position={[
+              electrolinera.locationReference.coordinatesForDisplay.latitude,
+              electrolinera.locationReference.coordinatesForDisplay.longitude
+            ]}
             icon={icon}
           >
             <Popup>
-              <strong>{alojamiento.hostalname}</strong><br />
-              Precio por noche: {alojamiento.precioNoche}€<br />
-              Provincia: {alojamiento.provincia}<br />
-              Camas Totales: {alojamiento.camasTotales}<br />
-              Camas Ocupadas: {alojamiento.camasocupadas}<br />
+              <strong>{electrolinera.name.values.value}</strong><br />
+              Última actualización: {new Date(electrolinera.lastUpdated).toLocaleString()}<br />
+              Horario: {electrolinera.operatingHours.label}<br />
+              Dirección: {electrolinera.locationReference._locationReferenceExtension.facilityLocation.address.addressLine.map(line => line.text.values.value).join(', ')}<br />
+              Municipio: {electrolinera.locationReference._locationReferenceExtension.facilityLocation.address.addressLine.find(line => line.text.values.value.startsWith("Municipio:")).text.values.value.split(': ')[1]}<br />
+              Provincia: {electrolinera.locationReference._locationReferenceExtension.facilityLocation.address.addressLine.find(line => line.text.values.value.startsWith("Provincia:")).text.values.value.split(': ')[1]}<br />
+              Comunidad Autónoma: {electrolinera.locationReference._locationReferenceExtension.facilityLocation.address.addressLine.find(line => line.text.values.value.startsWith("Comunidad Autónoma:")).text.values.value.split(': ')[1]}<br />
             </Popup>
           </Marker>
         ))}
@@ -65,4 +75,3 @@ const MapWithRoutes = ({ coordinates, camino }) => {
 };
 
 export default MapWithRoutes;
-

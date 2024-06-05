@@ -1,25 +1,25 @@
 // src/components/Grid.jsx
+
 import React from 'react';
 import Card from '../card/Card';
-import { albergues } from '../../data/albergues.js';
+import { electrolineras } from '../../data/electrolineras.js'; // Asegúrate de importar los datos correctos
 
-const Grid = ({ onAlbergueClick }) => {
+const Grid = ({ onElectrolineraClick }) => { // Cambiado el nombre de la función
   return (
     <div className="grid">
-      {albergues.map((albergue, index) => (
+      {electrolineras.map((electrolinera, index) => ( // Cambiado el nombre de la variable
         <Card
           key={index}
-          nombre={albergue.nombre}
-          camino={albergue.camino}
-          provincia={albergue.provincia}
-          precio={albergue.precio}
-          imagen={albergue.imagen}
-          onClick={() => onAlbergueClick(albergue.camino)} // Pasa el camino al onClick
+          nombre={electrolinera.nombre}
+          provincia={electrolinera.provincia} // Eliminado el atributo "camino"
+          precio={electrolinera.precio}
+          imagen={electrolinera.imagen}
+          onClick={() => onElectrolineraClick(electrolinera.provincia)} // Pasa la provincia al onClick
         />
       ))}
     </div>
   );
 };
 
-
 export default Grid;
+
