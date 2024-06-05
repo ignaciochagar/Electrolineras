@@ -127,7 +127,7 @@ const Form = () => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="hostalname">Nombre del hostal:</label>
+        <label htmlFor="hostalname">Nombre :</label>
         <input
           type="text"
           id="hostalname"
