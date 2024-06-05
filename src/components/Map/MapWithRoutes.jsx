@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import icono from "../../../public/img/greenMarker.png";
@@ -17,6 +17,7 @@ const MapWithRoutes = ({ coordinates, provincia }) => {
   const [showMarkers, setShowMarkers] = useState(true);
 
   console.log("La provincia es", provincia);
+  //console.log("La provincia es", coordinates);
 
   useEffect(() => {
     // Filtrar las electrolineras basadas en la provincia seleccionada
