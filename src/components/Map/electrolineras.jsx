@@ -1,4 +1,4 @@
-const electrolineras = [
+/* const electrolineras = [
     {
       name: "Electrolinera 1",
       location: [40.4168, -3.7038], // Madrid
@@ -14,5 +14,5 @@ const electrolineras = [
     // Añade más electrolineras según sea necesario
   ];
   
-  export default electrolineras;
+  export default electrolineras; */
   

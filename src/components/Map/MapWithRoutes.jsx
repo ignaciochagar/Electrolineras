@@ -44,7 +44,8 @@ const MapWithRoutes = ({ coordinates, provincia }) => {
       <button onClick={toggleMarkers}>
         {showMarkers ? 'Ocultar Electrolineras' : 'Mostrar Electrolineras'}
       </button>
-      <MapContainer center={[40.43731467230963, -3.689847347507708]} zoom={6} style={{ height: '550px', width: '1000px' }}>
+      <MapContainer center={[40.43731467230963, -3.689847347507708]} zoom={6}
+       minZoom={6} style={{ height: '550px', width: '1000px' }}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
