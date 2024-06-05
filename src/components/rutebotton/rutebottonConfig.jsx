@@ -8,7 +8,7 @@ const buttonsData = [
   { id: 7, label: 'Badajoz' },
   { id: 8, label: 'Barcelona' },
   { id: 9, label: 'Burgos' },
-  { id: 10, label: ' Castilla - La Mancha' },
+  //{ id: 10, label: 'Castilla - La Mancha' },
   { id: 11, label: 'Cádiz' },
   { id: 12, label: 'Cantabria' },
   { id: 13, label: 'Castellón' },

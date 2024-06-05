@@ -45,7 +45,7 @@ function App() {
           <>
             {currentView === 'map' && (
               <article className="map-outer">
-                <h2>{provincia}</h2>
+                <h2 >{provincia}</h2>
                 <MapWithRoutes provincia={provincia} />
                 <Buttons onRouteChange={handleProvinciaChange} />
               </article>
