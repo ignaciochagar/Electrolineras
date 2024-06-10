@@ -65,9 +65,7 @@ const MapWithRoutes = ({ coordinates, provincia }) => {
               Última actualización: {new Date(electrolinera.lastUpdated).toLocaleString()}<br />
               Horario: {electrolinera.operatingHours.label}<br />
               Dirección: {electrolinera.locationReference._locationReferenceExtension.facilityLocation.address.addressLine.map(line => line.text.values.value).join(', ')}<br />
-              Municipio: {electrolinera.locationReference._locationReferenceExtension.facilityLocation.address.addressLine.find(line => line.text.values.value.startsWith("Municipio:")).text.values.value.split(': ')[1]}<br />
-              Provincia: {electrolinera.locationReference._locationReferenceExtension.facilityLocation.address.addressLine.find(line => line.text.values.value.startsWith("Provincia:")).text.values.value.split(': ')[1]}<br />
-              Comunidad Autónoma: {electrolinera.locationReference._locationReferenceExtension.facilityLocation.address.addressLine.find(line => line.text.values.value.startsWith("Comunidad Autónoma:")).text.values.value.split(': ')[1]}<br />
+                        
             </Popup>
           </Marker>
         ))}

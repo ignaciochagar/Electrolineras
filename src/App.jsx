@@ -7,12 +7,12 @@ import Navbar from './components/navbar/navbar';
 import electrolineras from './Database/Electrolineras.json';
 import Grid from './components/grid/Grid';
 import './styles/styles.css';
-import FormularioAnfitriones from './components/FormularioAnfitriones/FormularioAnfitriones';
+import FormularioAnfitriones from './components/FormularioAnfitriones/NuevosRegistros';
 
 function App() {
   //const [selectedElectrolinera, //setSelectedElectrolinera] = useState(electrolineras.toledoElectrolinera);
   const [provincia, setProvincia] = useState('Asturias');
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentView, setCurrentView] = useState('map');
 
   const handleProvinciaChange = (provinciaLabel) => {

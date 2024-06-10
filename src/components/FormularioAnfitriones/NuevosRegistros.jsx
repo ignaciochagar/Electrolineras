@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import alojamientos from "../../Database/Alojamientos.json";
+import Electrolineras from "../../Database/Electrolineras.json";
 
 const Form = () => {
   const [hostalname, setHostalname] = useState("");
@@ -14,9 +14,9 @@ const Form = () => {
 
   useEffect(() => {
     const validateHostalname = () => {
-      const hostalYaRegistrado = alojamientos.some(alojamiento => alojamiento.hostalname === hostalname);
+      const hostalYaRegistrado = electrolineras.some(electrolinera => electrolinera.hostalname === hostalname);
       if (hostalYaRegistrado) {
-        setError("El nombre del alojamiento ya está registrado.");
+        setError("El nombre del electrolinera ya está registrado.");
       } else {
         setError('');
       }
@@ -95,10 +95,10 @@ const Form = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (error === '') {
-      const maxId = Math.max(...alojamientos.map(alojamiento => alojamiento.Alojamiento_id));
+      const maxId = Math.max(...electrolineras.map(electrolinera => electrolinera.electrolinera_id));
       const newId = maxId + 1;
-      const newAlojamiento = {
-          Alojamiento_id: newId,
+      const newelectrolinera = {
+          electrolinera_id: newId,
           hostalname,
           latitud: parseFloat(latitud),
           longitud: parseFloat(longitud),
@@ -108,7 +108,7 @@ const Form = () => {
           camasTotales: parseInt(camasTotales, 10),
           camasocupadas: 0
       };
-      alojamientos.push(newAlojamiento);
+      electrolineras.push(newelectrolinera);
       alert('Formulario enviado correctamente');
 
       setSuccess(true);

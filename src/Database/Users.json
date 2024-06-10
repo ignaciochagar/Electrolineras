@@ -26,5 +26,12 @@
 		"Licence" : 1,
 		"email" : "jhonse@example.com",
 		"password" : "Contraseña101112!"
+	},
+	{
+		"User_id" : 5,
+		"Name" : "User",
+		"Licence" : 1,
+		"email" : "user@user.com",
+		"password" : "User"
 	}
 ]
